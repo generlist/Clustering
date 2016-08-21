@@ -95,19 +95,12 @@ mat = buildSimilarityMatrix()
 groups = categorizeIntoClusters(mat)
 
 #visualization
-#fig = plt.figure(figsize=(10,10))
-#ax = fig.add_subplot(111)
-#ax.set_xlabel(x1)
-#ax.set_ylabel(x2)
-
-patches = []
 for i in range(len(groups)):
 	col = np.random.rand(3,1)
 	patches.append(mpatches.Patch(color=col, label="Group {}".format(i+1)))
 	for el in groups[i]:
 		plt.scatter(samples[el][0], samples[el][1], c=col, s=100)
-	#print "Grupa {}: {}".format(i+1, sorted(groups[i]))
+	print "Group {}: {}".format(i+1, sorted(groups[i]))
 
-plt.legend(handles=patches)
 plt.grid()
 plt.show()
